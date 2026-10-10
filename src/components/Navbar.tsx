@@ -1,5 +1,9 @@
 'use client';
 
 export default function Navbar() {
-  return <div className="rounded-2xl border border-slate-800 bg-slate-900 p-4 text-slate-100">Navbar stub</div>;
+  return (
+    <div className="border border-dashed border-slate-700 bg-slate-900 p-3 text-sm text-slate-300">
+      Navbar stub
+    </div>
+  );
 }

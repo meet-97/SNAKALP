@@ -1,9 +1,20 @@
 'use client';
 
-import type { PortfolioItem, Creator } from '@/types';
+import type { Creator, PortfolioItem } from '@/types';
 
-export default function WorkflowModal(props: { item: PortfolioItem | null; creator: Creator | null; onClose: () => void }) {
-  void props;
-  if (!props.item) return null;
-  return <div className="rounded-2xl border border-slate-800 bg-slate-900 p-4 text-slate-100">WorkflowModal stub</div>;
+interface WorkflowModalProps {
+  item: PortfolioItem | null;
+  creator: Creator | null;
+  onClose: () => void;
+}
+
+export default function WorkflowModal(props: WorkflowModalProps) {
+  if (props.item === null) {
+    return null;
+  }
+  return (
+    <div className="border border-dashed border-slate-700 bg-slate-900 p-3 text-sm text-slate-300">
+      WorkflowModal stub
+    </div>
+  );
 }

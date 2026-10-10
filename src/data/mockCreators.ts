@@ -2,668 +2,561 @@ import type { Creator } from '@/types';
 
 export const mockCreators: Creator[] = [
   {
-    "id": "creator-1",
-    "name": "Mira Veln",
-    "handle": "@veln.light",
-    "avatarUrl": "https://picsum.photos/seed/avatar-1/200/200",
-    "headline": "Product Ads creator",
-    "bio": "I craft original image work with documented workflows and clear revision plans.",
-    "experienceLevel": "Pro",
-    "toolsUsed": [
-      "Midjourney",
-      "Flux.1"
-    ],
-    "skills": [
-      "Product Photography",
-      "Brand Styling"
-    ],
-    "specializations": [
-      "Product Ads",
-      "Fashion & Lifestyle"
-    ],
-    "contentTypes": [
-      "image"
-    ],
-    "hourlyRate": 75,
-    "turnaroundDays": 3,
-    "rating": 4.9,
-    "completedProjects": 64,
-    "verification": {
-      "toolsVerified": true,
-      "workflowVerified": true,
-      "pastWorkVerified": true
+    id: 'creator-1',
+    name: 'Isha Verma',
+    handle: '@pixel.nomad',
+    avatarUrl: 'https://picsum.photos/seed/avatar-1/200/200',
+    headline: 'Product photography that sells, made with AI',
+    bio: 'Studio-grade product shots for D2C brands. I build repeatable lighting setups in Stable Diffusion and finish every image with careful retouching, so your catalogue looks consistent from the first SKU to the last.',
+    experienceLevel: 'Pro',
+    toolsUsed: ['Midjourney', 'Stable Diffusion', 'ControlNet', 'Flux.1', 'ChatGPT'],
+    skills: ['Product Photography', 'Upscaling & Retouching', 'Brand Styling'],
+    specializations: ['Product Ads', 'Social Media Content'],
+    contentTypes: ['image', 'prompt-pack'],
+    hourlyRate: 85,
+    turnaroundDays: 3,
+    rating: 4.9,
+    completedProjects: 142,
+    verification: {
+      toolsVerified: true,
+      workflowVerified: true,
+      pastWorkVerified: true,
     },
-    "featuredWork": [
+    featuredWork: [
       {
-        "id": "work-1-1",
-        "title": "Prism Product Ads Study",
-        "description": "Original fictional portfolio concept demonstrating product photography.",
-        "mediaType": "image",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-veln-prism/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "Midjourney",
-          "Flux.1"
-        ],
-        "workflow": {
-          "modelCheckpoint": "FLUX.1-dev",
-          "seed": 420001,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 28,
-          "cfgScale": 5,
-          "promptSnippet": "Product Ads concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-1-work-1',
+        title: 'Matte Black Perfume Hero Shot',
+        description: 'Moody hero image for a fictional perfume launch, with controlled rim lighting and a reflective stone base.',
+        mediaType: 'image',
+        mediaUrl: 'https://picsum.photos/seed/perfume-hero/800/1000',
+        aspectRatio: '4:5',
+        toolsUsed: ['Stable Diffusion', 'ControlNet'],
+        workflow: {
+          modelCheckpoint: 'Juggernaut XL v9',
+          seed: 482913650,
+          sampler: 'DPM++ 2M Karras',
+          steps: 32,
+          cfgScale: 6.5,
+          loras: ['product-lighting-v2'],
+          controlNets: ['canny'],
+          promptSnippet: 'matte black perfume bottle on wet stone, rim lighting, soft haze, studio product photography, 85mm',
+          negativePromptSnippet: 'text, watermark, blurry, distorted bottle, extra objects',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
       },
       {
-        "id": "work-1-2",
-        "title": "Dusk Product Ads Study",
-        "description": "Original fictional portfolio concept demonstrating product photography.",
-        "mediaType": "image",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-veln-dusk/640/800",
-        "aspectRatio": "4:5",
-        "toolsUsed": [
-          "Midjourney",
-          "Flux.1"
-        ],
-        "workflow": {
-          "modelCheckpoint": "FLUX.1-dev",
-          "seed": 420020,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 28,
-          "cfgScale": 5,
-          "promptSnippet": "Product Ads concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-1-work-2',
+        title: 'Citrus Soda Splash Campaign',
+        description: 'Bright splash visual for a fictional sparkling drink, built for social ads and in-store posters.',
+        mediaType: 'image',
+        mediaUrl: 'https://picsum.photos/seed/citrus-splash/800/800',
+        aspectRatio: '1:1',
+        toolsUsed: ['Flux.1'],
+        workflow: {
+          modelCheckpoint: 'FLUX.1 schnell',
+          seed: 90217734,
+          sampler: 'Euler',
+          steps: 28,
+          cfgScale: 3.5,
+          promptSnippet: 'sparkling orange soda can mid-splash, frozen droplets, bold yellow backdrop, high-speed flash photography',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
-      }
-    ]
+        commercialLicensed: true,
+        licenseType: 'open-source',
+      },
+      {
+        id: 'creator-1-work-3',
+        title: 'Product Prompt Pack Vol. 1',
+        description: 'A pack of 40 tested prompts for tabletop product shots, grouped by material: glass, metal, fabric and food.',
+        mediaType: 'prompt-pack',
+        mediaUrl: 'https://picsum.photos/seed/prompt-pack-product/800/800',
+        aspectRatio: '1:1',
+        toolsUsed: ['Midjourney', 'ChatGPT'],
+        workflow: {
+          modelCheckpoint: 'Midjourney v6.1',
+          seed: 1234567,
+          promptSnippet: 'product on seamless paper backdrop, soft box lighting, subtle shadow, --ar 1:1 --style raw',
+          revisionReady: true,
+        },
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
+      },
+    ],
   },
   {
-    "id": "creator-2",
-    "name": "Orin Tave",
-    "handle": "@tave.frames",
-    "avatarUrl": "https://picsum.photos/seed/avatar-2/200/200",
-    "headline": "Character Design creator",
-    "bio": "I craft original image and prompt-pack work with documented workflows and clear revision plans.",
-    "experienceLevel": "Studio",
-    "toolsUsed": [
-      "ComfyUI",
-      "Stable Diffusion",
-      "ControlNet"
-    ],
-    "skills": [
-      "Character Consistency",
-      "Prompt Engineering"
-    ],
-    "specializations": [
-      "Character Design"
-    ],
-    "contentTypes": [
-      "image",
-      "prompt-pack"
-    ],
-    "hourlyRate": 120,
-    "turnaroundDays": 4,
-    "rating": 5,
-    "completedProjects": 92,
-    "verification": {
-      "toolsVerified": true,
-      "workflowVerified": true,
-      "pastWorkVerified": true
+    id: 'creator-2',
+    name: 'Kabir Rao',
+    handle: '@kabir.lenses',
+    avatarUrl: 'https://picsum.photos/seed/avatar-2/200/200',
+    headline: 'Fashion lookbooks with a consistent AI model',
+    bio: 'I train custom character models so one virtual model can wear an entire collection. Fashion labels use my lookbooks and editorial sets to launch seasons without a physical shoot.',
+    experienceLevel: 'Pro',
+    toolsUsed: ['Midjourney', 'ComfyUI', 'Stable Diffusion', 'ControlNet'],
+    skills: ['Character Consistency', 'Brand Styling', 'Upscaling & Retouching'],
+    specializations: ['Fashion & Lifestyle', 'Character Design'],
+    contentTypes: ['image'],
+    hourlyRate: 110,
+    turnaroundDays: 5,
+    rating: 4.8,
+    completedProjects: 97,
+    verification: {
+      toolsVerified: true,
+      workflowVerified: true,
+      pastWorkVerified: true,
     },
-    "featuredWork": [
+    featuredWork: [
       {
-        "id": "work-2-1",
-        "title": "Prism Character Design Study",
-        "description": "Original fictional portfolio concept demonstrating character consistency.",
-        "mediaType": "image",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-tave-prism/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "ComfyUI",
-          "Stable Diffusion",
-          "ControlNet"
-        ],
-        "workflow": {
-          "modelCheckpoint": "SDXL 1.0 Base",
-          "seed": 420114,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 29,
-          "cfgScale": 6,
-          "promptSnippet": "Character Design concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-2-work-1',
+        title: 'Monsoon Lookbook Model Series',
+        description: 'Six-look lookbook with one consistent virtual model, made with a model I trained on my own studio photos.',
+        mediaType: 'image',
+        mediaUrl: 'https://picsum.photos/seed/monsoon-lookbook/800/1000',
+        aspectRatio: '4:5',
+        toolsUsed: ['ComfyUI', 'Stable Diffusion', 'ControlNet'],
+        workflow: {
+          modelCheckpoint: 'RealVisXL V4.0',
+          seed: 731950284,
+          sampler: 'DPM++ SDE Karras',
+          steps: 35,
+          cfgScale: 5,
+          loras: ['kabir-model-v3'],
+          controlNets: ['openpose', 'depth'],
+          promptSnippet: 'fashion model in teal raincoat, city street after rain, soft overcast light, editorial photography',
+          negativePromptSnippet: 'deformed hands, extra fingers, plastic skin, text',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "own-trained"
+        commercialLicensed: true,
+        licenseType: 'own-trained',
       },
       {
-        "id": "work-2-2",
-        "title": "Dusk Character Design Study",
-        "description": "Original fictional portfolio concept demonstrating character consistency.",
-        "mediaType": "prompt-pack",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-tave-dusk/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "ComfyUI",
-          "Stable Diffusion",
-          "ControlNet"
-        ],
-        "workflow": {
-          "modelCheckpoint": "SDXL 1.0 Base",
-          "seed": 420133,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 29,
-          "cfgScale": 6,
-          "promptSnippet": "Character Design concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-2-work-2',
+        title: 'Street Style Editorial',
+        description: 'Vertical editorial set for a fictional streetwear label, designed for stories and short-form feeds.',
+        mediaType: 'image',
+        mediaUrl: 'https://picsum.photos/seed/street-editorial/720/1280',
+        aspectRatio: '9:16',
+        toolsUsed: ['Midjourney'],
+        workflow: {
+          modelCheckpoint: 'Midjourney v6.1',
+          seed: 55820931,
+          promptSnippet: 'streetwear model on graffiti wall, golden hour, 35mm film grain, candid pose --ar 9:16',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "own-trained"
-      }
-    ]
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
+      },
+    ],
   },
   {
-    "id": "creator-3",
-    "name": "Luma Sern",
-    "handle": "@sern.motion",
-    "avatarUrl": "https://picsum.photos/seed/avatar-3/200/200",
-    "headline": "Film & Storytelling creator",
-    "bio": "I craft original video work with documented workflows and clear revision plans.",
-    "experienceLevel": "Pro",
-    "toolsUsed": [
-      "Runway Gen-3",
-      "Pika Labs"
-    ],
-    "skills": [
-      "Motion Design",
-      "Storyboarding"
-    ],
-    "specializations": [
-      "Film & Storytelling",
-      "Social Media Content"
-    ],
-    "contentTypes": [
-      "video"
-    ],
-    "hourlyRate": 95,
-    "turnaroundDays": 5,
-    "rating": 4.8,
-    "completedProjects": 51,
-    "verification": {
-      "toolsVerified": true,
-      "workflowVerified": true,
-      "pastWorkVerified": true
+    id: 'creator-3',
+    name: 'Meera Nair',
+    handle: '@meera.motion',
+    avatarUrl: 'https://picsum.photos/seed/avatar-3/200/200',
+    headline: 'Cinematic brand films and short-form video',
+    bio: 'A small studio of one, delivering storyboarded brand films from first frame to final grade. I plan every shot in advance so the AI output feels directed, not random.',
+    experienceLevel: 'Studio',
+    toolsUsed: ['Runway Gen-3', 'Pika Labs', 'ComfyUI', 'ElevenLabs'],
+    skills: ['Motion Design', 'Storyboarding', 'Lip Sync'],
+    specializations: ['Film & Storytelling', 'Social Media Content'],
+    contentTypes: ['video'],
+    hourlyRate: 140,
+    turnaroundDays: 7,
+    rating: 5.0,
+    completedProjects: 63,
+    verification: {
+      toolsVerified: true,
+      workflowVerified: true,
+      pastWorkVerified: true,
     },
-    "featuredWork": [
+    featuredWork: [
       {
-        "id": "work-3-1",
-        "title": "Prism Film & Storytelling Study",
-        "description": "Original fictional portfolio concept demonstrating motion design.",
-        "mediaType": "video",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-sern-prism/960/540",
-        "aspectRatio": "16:9",
-        "toolsUsed": [
-          "Runway Gen-3",
-          "Pika Labs"
-        ],
-        "workflow": {
-          "modelCheckpoint": "Runway Gen-3 Alpha",
-          "seed": 420227,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 30,
-          "cfgScale": 7,
-          "promptSnippet": "Film & Storytelling concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-3-work-1',
+        title: 'Monsoon Chai Brand Film',
+        description: 'A 30-second brand film for a fictional tea company, with warm steam, rain on glass and a slow push-in.',
+        mediaType: 'video',
+        mediaUrl: 'https://picsum.photos/seed/chai-film/1280/720',
+        aspectRatio: '16:9',
+        toolsUsed: ['Runway Gen-3'],
+        workflow: {
+          modelCheckpoint: 'Runway Gen-3 Alpha',
+          seed: 20481733,
+          promptSnippet: 'slow push-in on a steaming glass of chai, rain streaking the window behind, warm tungsten light, shallow depth of field',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
       },
       {
-        "id": "work-3-2",
-        "title": "Dusk Film & Storytelling Study",
-        "description": "Original fictional portfolio concept demonstrating motion design.",
-        "mediaType": "video",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-sern-dusk/960/540",
-        "aspectRatio": "16:9",
-        "toolsUsed": [
-          "Runway Gen-3",
-          "Pika Labs"
-        ],
-        "workflow": {
-          "modelCheckpoint": "Runway Gen-3 Alpha",
-          "seed": 420246,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 30,
-          "cfgScale": 7,
-          "promptSnippet": "Film & Storytelling concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-3-work-2',
+        title: 'Coastal Drive Travel Reel',
+        description: 'Vertical travel reel built from six generated shots, cut to a steady beat for social platforms.',
+        mediaType: 'video',
+        mediaUrl: 'https://picsum.photos/seed/coastal-drive/720/1280',
+        aspectRatio: '9:16',
+        toolsUsed: ['Runway Gen-3', 'Pika Labs'],
+        workflow: {
+          modelCheckpoint: 'Runway Gen-3 Alpha Turbo',
+          seed: 77310452,
+          promptSnippet: 'open-top car on a coastal road at sunrise, drone follow shot, palm trees, soft lens flare',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
-      }
-    ]
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
+      },
+      {
+        id: 'creator-3-work-3',
+        title: 'Last Lantern Short Film Teaser',
+        description: 'Ultra-wide teaser for a fictional fantasy short, graded for a cinema look.',
+        mediaType: 'video',
+        mediaUrl: 'https://picsum.photos/seed/last-lantern/1260/540',
+        aspectRatio: '21:9',
+        toolsUsed: ['Runway Gen-3', 'ComfyUI'],
+        workflow: {
+          modelCheckpoint: 'SVD-XT 1.1',
+          seed: 4402917,
+          sampler: 'euler',
+          steps: 25,
+          cfgScale: 3,
+          promptSnippet: 'lone traveler carrying a glowing lantern across a misty valley at dusk, cinematic wide shot, volumetric fog',
+          negativePromptSnippet: 'flicker, warped faces, jitter',
+          revisionReady: false,
+        },
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
+      },
+    ],
   },
   {
-    "id": "creator-4",
-    "name": "Daro Fenn",
-    "handle": "@fenn.reels",
-    "avatarUrl": "https://picsum.photos/seed/avatar-4/200/200",
-    "headline": "Social Media Content creator",
-    "bio": "I craft original video work with documented workflows and clear revision plans.",
-    "experienceLevel": "Intermediate",
-    "toolsUsed": [
-      "Pika Labs",
-      "ChatGPT"
-    ],
-    "skills": [
-      "Lip Sync",
-      "Storyboarding"
-    ],
-    "specializations": [
-      "Social Media Content"
-    ],
-    "contentTypes": [
-      "video"
-    ],
-    "hourlyRate": 55,
-    "turnaroundDays": 6,
-    "rating": 4.5,
-    "completedProjects": 28,
-    "verification": {
-      "toolsVerified": true,
-      "workflowVerified": false,
-      "pastWorkVerified": true
+    id: 'creator-4',
+    name: 'Rohan Desai',
+    handle: '@rohan.reels',
+    avatarUrl: 'https://picsum.photos/seed/avatar-4/200/200',
+    headline: 'Fast, punchy reels for small brands',
+    bio: 'I turn a rough idea into a scroll-stopping reel in a few days. Good for festive sales, launches and quick social campaigns on a modest budget.',
+    experienceLevel: 'Intermediate',
+    toolsUsed: ['Pika Labs', 'Runway Gen-3', 'Midjourney', 'ChatGPT'],
+    skills: ['Motion Design', 'Prompt Engineering', 'Storyboarding'],
+    specializations: ['Social Media Content', 'Animation & Motion'],
+    contentTypes: ['video', 'image'],
+    hourlyRate: 55,
+    turnaroundDays: 4,
+    rating: 4.3,
+    completedProjects: 38,
+    verification: {
+      toolsVerified: true,
+      workflowVerified: false,
+      pastWorkVerified: true,
     },
-    "featuredWork": [
+    featuredWork: [
       {
-        "id": "work-4-1",
-        "title": "Prism Social Media Content Study",
-        "description": "Original fictional portfolio concept demonstrating lip sync.",
-        "mediaType": "video",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-fenn-prism/960/540",
-        "aspectRatio": "16:9",
-        "toolsUsed": [
-          "Pika Labs",
-          "ChatGPT"
-        ],
-        "workflow": {
-          "modelCheckpoint": "Pika 2.2",
-          "seed": 420340,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 31,
-          "cfgScale": 8,
-          "promptSnippet": "Social Media Content concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-4-work-1',
+        title: 'Festival Sale Teaser Reel',
+        description: 'A 15-second vertical teaser with animated product cut-ins for a fictional home-decor store.',
+        mediaType: 'video',
+        mediaUrl: 'https://picsum.photos/seed/festival-teaser/720/1280',
+        aspectRatio: '9:16',
+        toolsUsed: ['Pika Labs', 'Midjourney'],
+        workflow: {
+          modelCheckpoint: 'Pika 1.5',
+          seed: 31982046,
+          promptSnippet: 'colorful diya lamps and rangoli pattern, camera orbit, sparkles drifting upward, festive night mood',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
       },
       {
-        "id": "work-4-2",
-        "title": "Dusk Social Media Content Study",
-        "description": "Original fictional portfolio concept demonstrating lip sync.",
-        "mediaType": "video",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-fenn-dusk/960/540",
-        "aspectRatio": "16:9",
-        "toolsUsed": [
-          "Pika Labs",
-          "ChatGPT"
-        ],
-        "workflow": {
-          "modelCheckpoint": "Pika 2.2",
-          "seed": 420359,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 31,
-          "cfgScale": 8,
-          "promptSnippet": "Social Media Content concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-4-work-2',
+        title: 'Fan Trailer Concept',
+        description: 'Experimental trailer concept made with a free trial model. Not cleared for commercial use.',
+        mediaType: 'video',
+        mediaUrl: 'https://picsum.photos/seed/fan-trailer/1280/720',
+        aspectRatio: '16:9',
+        toolsUsed: ['Runway Gen-3'],
+        workflow: {
+          modelCheckpoint: 'Runway Gen-3 Alpha (trial)',
+          seed: 60429183,
+          promptSnippet: 'armored hero walking through a ruined city, dust in the air, handheld camera, dramatic backlight',
+          revisionReady: false,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
-      }
-    ]
+        commercialLicensed: false,
+        licenseType: 'non-commercial',
+      },
+    ],
   },
   {
-    "id": "creator-5",
-    "name": "Neri Quill",
-    "handle": "@quill.loops",
-    "avatarUrl": "https://picsum.photos/seed/avatar-5/200/200",
-    "headline": "Animation & Motion creator",
-    "bio": "I craft original animation work with documented workflows and clear revision plans.",
-    "experienceLevel": "Intermediate",
-    "toolsUsed": [
-      "AnimateDiff",
-      "ComfyUI",
-      "ControlNet"
-    ],
-    "skills": [
-      "Motion Design",
-      "Character Consistency"
-    ],
-    "specializations": [
-      "Animation & Motion"
-    ],
-    "contentTypes": [
-      "animation"
-    ],
-    "hourlyRate": 65,
-    "turnaroundDays": 7,
-    "rating": 4.6,
-    "completedProjects": 35,
-    "verification": {
-      "toolsVerified": true,
-      "workflowVerified": true,
-      "pastWorkVerified": false
+    id: 'creator-5',
+    name: 'Tara Kulkarni',
+    handle: '@tara.toons',
+    avatarUrl: 'https://picsum.photos/seed/avatar-5/200/200',
+    headline: 'Anime-style loops and character animation',
+    bio: 'I make looping animations and character turnarounds in an anime style. My ComfyUI graphs keep characters on-model from frame to frame.',
+    experienceLevel: 'Pro',
+    toolsUsed: ['AnimateDiff', 'ComfyUI', 'Stable Diffusion', 'ControlNet'],
+    skills: ['Character Consistency', 'Motion Design', 'Storyboarding'],
+    specializations: ['Animation & Motion', 'Character Design'],
+    contentTypes: ['animation', 'image'],
+    hourlyRate: 70,
+    turnaroundDays: 6,
+    rating: 4.7,
+    completedProjects: 54,
+    verification: {
+      toolsVerified: true,
+      workflowVerified: true,
+      pastWorkVerified: false,
     },
-    "featuredWork": [
+    featuredWork: [
       {
-        "id": "work-5-1",
-        "title": "Prism Animation & Motion Study",
-        "description": "Original fictional portfolio concept demonstrating motion design.",
-        "mediaType": "animation",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-quill-prism/540/960",
-        "aspectRatio": "9:16",
-        "toolsUsed": [
-          "AnimateDiff",
-          "ComfyUI",
-          "ControlNet"
-        ],
-        "workflow": {
-          "modelCheckpoint": "AnimateDiff SDXL Motion",
-          "seed": 420453,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 32,
-          "cfgScale": 5,
-          "promptSnippet": "Animation & Motion concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-5-work-1',
+        title: 'Mochi the Monsoon Cat Loop',
+        description: 'A seamless 3-second loop of a small cat watching rain, made for sticker packs and social posts.',
+        mediaType: 'animation',
+        mediaUrl: 'https://picsum.photos/seed/mochi-cat/800/800',
+        aspectRatio: '1:1',
+        toolsUsed: ['AnimateDiff', 'ComfyUI'],
+        workflow: {
+          modelCheckpoint: 'ToonYou Beta 6',
+          seed: 3391827,
+          sampler: 'euler_ancestral',
+          steps: 25,
+          cfgScale: 7,
+          loras: ['motion-loop-v1'],
+          controlNets: ['lineart'],
+          promptSnippet: 'small white cat sitting by a window, rain on glass, soft pastel colors, anime style, gentle blinking loop',
+          negativePromptSnippet: 'flicker, extra limbs, blurry, low quality',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "open-source"
+        commercialLicensed: true,
+        licenseType: 'open-source',
       },
       {
-        "id": "work-5-2",
-        "title": "Dusk Animation & Motion Study",
-        "description": "Original fictional portfolio concept demonstrating motion design.",
-        "mediaType": "animation",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-quill-dusk/540/960",
-        "aspectRatio": "9:16",
-        "toolsUsed": [
-          "AnimateDiff",
-          "ComfyUI",
-          "ControlNet"
-        ],
-        "workflow": {
-          "modelCheckpoint": "AnimateDiff SDXL Motion",
-          "seed": 420472,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 32,
-          "cfgScale": 5,
-          "promptSnippet": "Animation & Motion concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-5-work-2',
+        title: 'Skyline Dancer Walk Cycle',
+        description: 'Widescreen character walk cycle on a city rooftop at sunset, driven by pose references.',
+        mediaType: 'animation',
+        mediaUrl: 'https://picsum.photos/seed/skyline-dancer/1280/720',
+        aspectRatio: '16:9',
+        toolsUsed: ['AnimateDiff', 'ControlNet'],
+        workflow: {
+          modelCheckpoint: 'DreamShaper 8',
+          seed: 6620419,
+          sampler: 'DPM++ 2M',
+          steps: 30,
+          cfgScale: 7.5,
+          controlNets: ['openpose'],
+          promptSnippet: 'anime girl in a red jacket walking along a rooftop, city skyline at sunset, smooth walk cycle',
+          negativePromptSnippet: 'deformed hands, jitter, duplicate character',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "open-source"
-      }
-    ]
+        commercialLicensed: true,
+        licenseType: 'open-source',
+      },
+      {
+        id: 'creator-5-work-3',
+        title: 'Ria Character Sheet',
+        description: 'Front, side and back views of an original anime character, ready to hand over to an animation team.',
+        mediaType: 'image',
+        mediaUrl: 'https://picsum.photos/seed/ria-sheet/800/1000',
+        aspectRatio: '4:5',
+        toolsUsed: ['Stable Diffusion', 'ControlNet'],
+        workflow: {
+          modelCheckpoint: 'Anything V5',
+          seed: 9150372,
+          sampler: 'DPM++ 2M Karras',
+          steps: 28,
+          cfgScale: 8,
+          controlNets: ['openpose', 'lineart'],
+          promptSnippet: 'character turnaround sheet, anime girl with short silver hair, front side and back view, plain white background',
+          negativePromptSnippet: 'cropped, extra fingers, text, watermark',
+          revisionReady: true,
+        },
+        commercialLicensed: true,
+        licenseType: 'open-source',
+      },
+    ],
   },
   {
-    "id": "creator-6",
-    "name": "Sela Voss",
-    "handle": "@voss.sound",
-    "avatarUrl": "https://picsum.photos/seed/avatar-6/200/200",
-    "headline": "Music & Voice creator",
-    "bio": "I craft original audio work with documented workflows and clear revision plans.",
-    "experienceLevel": "Pro",
-    "toolsUsed": [
-      "Suno"
-    ],
-    "skills": [
-      "Music Composition"
-    ],
-    "specializations": [
-      "Music & Voice"
-    ],
-    "contentTypes": [
-      "audio"
-    ],
-    "hourlyRate": 85,
-    "turnaroundDays": 8,
-    "rating": 4.7,
-    "completedProjects": 43,
-    "verification": {
-      "toolsVerified": false,
-      "workflowVerified": true,
-      "pastWorkVerified": false
+    id: 'creator-6',
+    name: 'Dev Malhotra',
+    handle: '@dev.beats',
+    avatarUrl: 'https://picsum.photos/seed/avatar-6/200/200',
+    headline: 'Jingles and background music in a day or two',
+    bio: 'I write short jingles, loops and background tracks for ads, reels and podcasts. I guide each track with a clear prompt brief, so revisions are quick.',
+    experienceLevel: 'Pro',
+    toolsUsed: ['Suno', 'ChatGPT'],
+    skills: ['Music Composition', 'Prompt Engineering'],
+    specializations: ['Music & Voice', 'Social Media Content'],
+    contentTypes: ['audio'],
+    hourlyRate: 60,
+    turnaroundDays: 2,
+    rating: 4.6,
+    completedProjects: 120,
+    verification: {
+      toolsVerified: true,
+      workflowVerified: false,
+      pastWorkVerified: false,
     },
-    "featuredWork": [
+    featuredWork: [
       {
-        "id": "work-6-1",
-        "title": "Prism Music & Voice Study",
-        "description": "Original fictional portfolio concept demonstrating music composition.",
-        "mediaType": "audio",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-voss-prism/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "Suno"
-        ],
-        "workflow": {
-          "modelCheckpoint": "Suno v4",
-          "seed": 420566,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 33,
-          "cfgScale": 6,
-          "promptSnippet": "Music & Voice concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-6-work-1',
+        title: 'Festive Sale Jingle (30s)',
+        description: 'Upbeat 30-second jingle with dhol and bells, made for a fictional festive sale.',
+        mediaType: 'audio',
+        mediaUrl: 'https://picsum.photos/seed/festive-jingle/800/800',
+        aspectRatio: '1:1',
+        toolsUsed: ['Suno', 'ChatGPT'],
+        workflow: {
+          modelCheckpoint: 'Suno v3.5',
+          seed: 8841205,
+          promptSnippet: 'upbeat festive jingle, dhol and bells, cheerful female hook, 120 bpm, catchy chorus, 30 seconds',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
       },
       {
-        "id": "work-6-2",
-        "title": "Dusk Music & Voice Study",
-        "description": "Original fictional portfolio concept demonstrating music composition.",
-        "mediaType": "audio",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-voss-dusk/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "Suno"
-        ],
-        "workflow": {
-          "modelCheckpoint": "Suno v4",
-          "seed": 420585,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 33,
-          "cfgScale": 6,
-          "promptSnippet": "Music & Voice concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-6-work-2',
+        title: 'Lo-fi Study Loop Pack',
+        description: 'Five calm lo-fi loops for videos and streams, each exported as a seamless loop.',
+        mediaType: 'audio',
+        mediaUrl: 'https://picsum.photos/seed/lofi-loops/1280/720',
+        aspectRatio: '16:9',
+        toolsUsed: ['Suno'],
+        workflow: {
+          modelCheckpoint: 'Suno v3.5',
+          seed: 2760914,
+          promptSnippet: 'lo-fi hip hop loop, soft piano, vinyl crackle, mellow drums, 80 bpm, instrumental',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
-      }
-    ]
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
+      },
+    ],
   },
   {
-    "id": "creator-7",
-    "name": "Tovin Rell",
-    "handle": "@rell.voice",
-    "avatarUrl": "https://picsum.photos/seed/avatar-7/200/200",
-    "headline": "Music & Voice creator",
-    "bio": "I craft original audio work with documented workflows and clear revision plans.",
-    "experienceLevel": "Beginner",
-    "toolsUsed": [
-      "ElevenLabs",
-      "Claude 3.5"
-    ],
-    "skills": [
-      "Voice Cloning",
-      "Prompt Engineering"
-    ],
-    "specializations": [
-      "Music & Voice"
-    ],
-    "contentTypes": [
-      "audio"
-    ],
-    "hourlyRate": 25,
-    "turnaroundDays": 9,
-    "rating": 3.8,
-    "completedProjects": 8,
-    "verification": {
-      "toolsVerified": false,
-      "workflowVerified": false,
-      "pastWorkVerified": false
+    id: 'creator-7',
+    name: 'Anaya Iyer',
+    handle: '@anaya.voice',
+    avatarUrl: 'https://picsum.photos/seed/avatar-7/200/200',
+    headline: 'Natural AI voiceovers in Hindi and English',
+    bio: 'I produce voiceovers and narration samples for explainers, audiobooks and product videos. Just starting out, so my rates are friendly and I welcome feedback.',
+    experienceLevel: 'Beginner',
+    toolsUsed: ['ElevenLabs', 'ChatGPT', 'Claude 3.5'],
+    skills: ['Voice Cloning', 'Lip Sync', 'Prompt Engineering'],
+    specializations: ['Music & Voice', 'Film & Storytelling'],
+    contentTypes: ['audio'],
+    hourlyRate: 30,
+    turnaroundDays: 2,
+    rating: 4.0,
+    completedProjects: 12,
+    verification: {
+      toolsVerified: false,
+      workflowVerified: false,
+      pastWorkVerified: false,
     },
-    "featuredWork": [
+    featuredWork: [
       {
-        "id": "work-7-1",
-        "title": "Prism Music & Voice Study",
-        "description": "Original fictional portfolio concept demonstrating voice cloning.",
-        "mediaType": "audio",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-rell-prism/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "ElevenLabs",
-          "Claude 3.5"
-        ],
-        "workflow": {
-          "modelCheckpoint": "Eleven Multilingual v2",
-          "seed": 420679,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 34,
-          "cfgScale": 7,
-          "promptSnippet": "Music & Voice concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": false
+        id: 'creator-7-work-1',
+        title: 'Audiobook Narration Sample',
+        description: 'A two-minute warm, steady narration sample for a fictional mystery novel.',
+        mediaType: 'audio',
+        mediaUrl: 'https://picsum.photos/seed/audiobook-sample/800/800',
+        aspectRatio: '1:1',
+        toolsUsed: ['ElevenLabs'],
+        workflow: {
+          modelCheckpoint: 'ElevenLabs Multilingual v2',
+          seed: 5502841,
+          promptSnippet: 'warm female narrator, calm pacing, soft emphasis on key words, slight pause at commas',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
       },
       {
-        "id": "work-7-2",
-        "title": "Dusk Music & Voice Study",
-        "description": "Original fictional portfolio concept demonstrating voice cloning.",
-        "mediaType": "audio",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-rell-dusk/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "ElevenLabs",
-          "Claude 3.5"
-        ],
-        "workflow": {
-          "modelCheckpoint": "Eleven Multilingual v2",
-          "seed": 420698,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 34,
-          "cfgScale": 7,
-          "promptSnippet": "Music & Voice concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": false
+        id: 'creator-7-work-2',
+        title: 'Bilingual Product Explainer Voiceover',
+        description: 'A 45-second explainer voiceover that switches between Hindi and English, with a script polished by an AI assistant.',
+        mediaType: 'audio',
+        mediaUrl: 'https://picsum.photos/seed/explainer-voice/1280/720',
+        aspectRatio: '16:9',
+        toolsUsed: ['ElevenLabs', 'ChatGPT'],
+        workflow: {
+          modelCheckpoint: 'ElevenLabs Multilingual v2',
+          seed: 7719306,
+          promptSnippet: 'friendly confident voice, medium pace, natural switch between Hindi and English, upbeat ending',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
-      }
-    ]
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
+      },
+    ],
   },
   {
-    "id": "creator-8",
-    "name": "Aven Pell",
-    "handle": "@pell.visuals",
-    "avatarUrl": "https://picsum.photos/seed/avatar-8/200/200",
-    "headline": "Fashion & Lifestyle creator",
-    "bio": "I craft original image work with documented workflows and clear revision plans.",
-    "experienceLevel": "Beginner",
-    "toolsUsed": [
-      "Stable Diffusion",
-      "Midjourney"
-    ],
-    "skills": [
-      "Upscaling & Retouching",
-      "Brand Styling"
-    ],
-    "specializations": [
-      "Fashion & Lifestyle"
-    ],
-    "contentTypes": [
-      "image"
-    ],
-    "hourlyRate": 40,
-    "turnaroundDays": 10,
-    "rating": 4.1,
-    "completedProjects": 15,
-    "verification": {
-      "toolsVerified": false,
-      "workflowVerified": false,
-      "pastWorkVerified": false
+    id: 'creator-8',
+    name: 'Zoya Khan',
+    handle: '@zoya.prompts',
+    avatarUrl: 'https://picsum.photos/seed/avatar-8/200/200',
+    headline: 'Poster art and prompt packs for cafes and creators',
+    bio: 'New to freelancing. I design poster series and sell prompt packs for small cafes, creators and event pages. Happy to work with tight budgets.',
+    experienceLevel: 'Beginner',
+    toolsUsed: ['Midjourney', 'Stable Diffusion', 'ChatGPT'],
+    skills: ['Prompt Engineering', 'Brand Styling'],
+    specializations: ['Social Media Content', 'Fashion & Lifestyle'],
+    contentTypes: ['image', 'prompt-pack'],
+    hourlyRate: 25,
+    turnaroundDays: 3,
+    rating: 3.9,
+    completedProjects: 9,
+    verification: {
+      toolsVerified: false,
+      workflowVerified: false,
+      pastWorkVerified: false,
     },
-    "featuredWork": [
+    featuredWork: [
       {
-        "id": "work-8-1",
-        "title": "Prism Fashion & Lifestyle Study",
-        "description": "Original fictional portfolio concept demonstrating upscaling & retouching.",
-        "mediaType": "image",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-pell-prism/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "Stable Diffusion",
-          "Midjourney"
-        ],
-        "workflow": {
-          "modelCheckpoint": "SDXL 1.0 Base",
-          "seed": 420792,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 35,
-          "cfgScale": 8,
-          "promptSnippet": "Fashion & Lifestyle concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-8-work-1',
+        title: 'Pastel Cafe Poster Series',
+        description: 'Set of three pastel poster designs for a fictional neighbourhood cafe.',
+        mediaType: 'image',
+        mediaUrl: 'https://picsum.photos/seed/pastel-cafe/800/1000',
+        aspectRatio: '4:5',
+        toolsUsed: ['Midjourney'],
+        workflow: {
+          modelCheckpoint: 'Midjourney v6.1',
+          seed: 4418203,
+          promptSnippet: 'pastel illustrated cafe poster, latte art, croissant, soft pink and mint palette, flat design --ar 4:5',
+          revisionReady: true,
         },
-        "commercialLicensed": true,
-        "licenseType": "commercial-safe"
+        commercialLicensed: true,
+        licenseType: 'commercial-safe',
       },
       {
-        "id": "work-8-2",
-        "title": "Dusk Fashion & Lifestyle Study",
-        "description": "Original fictional portfolio concept demonstrating upscaling & retouching.",
-        "mediaType": "image",
-        "mediaUrl": "https://picsum.photos/seed/snakalp-pell-dusk/640/640",
-        "aspectRatio": "1:1",
-        "toolsUsed": [
-          "Stable Diffusion",
-          "Midjourney"
-        ],
-        "workflow": {
-          "modelCheckpoint": "SDXL 1.0 Base",
-          "seed": 420811,
-          "sampler": "DPM++ 2M Karras",
-          "steps": 35,
-          "cfgScale": 8,
-          "promptSnippet": "Fashion & Lifestyle concept, balanced composition, soft studio lighting, refined detail",
-          "negativePromptSnippet": "artifacts, distortion, blurry detail",
-          "revisionReady": true
+        id: 'creator-8-work-2',
+        title: 'Retro Poster Experiments',
+        description: 'Fan-style retro poster tests made on a research-only merged model. Not cleared for commercial use.',
+        mediaType: 'image',
+        mediaUrl: 'https://picsum.photos/seed/retro-experiments/800/800',
+        aspectRatio: '1:1',
+        toolsUsed: ['Stable Diffusion'],
+        workflow: {
+          modelCheckpoint: 'SD 1.5 Fan Merge (research only)',
+          seed: 1029384,
+          sampler: 'Euler a',
+          steps: 24,
+          cfgScale: 8,
+          promptSnippet: 'retro 1980s sci-fi movie poster, neon grid, chrome title text, dramatic sunset',
+          negativePromptSnippet: 'blurry, low resolution, extra text',
+          revisionReady: false,
         },
-        "commercialLicensed": false,
-        "licenseType": "non-commercial"
-      }
-    ]
-  }
+        commercialLicensed: false,
+        licenseType: 'non-commercial',
+      },
+    ],
+  },
 ];
 
 export function getCreatorById(id: string): Creator | undefined {
-  return mockCreators.find(creator => creator.id === id);
+  return mockCreators.find((creator) => creator.id === id);
 }

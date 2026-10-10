@@ -2,7 +2,15 @@
 
 import type { BriefStatus } from '@/types';
 
-export default function BriefTracker(props: { status: BriefStatus }) {
+interface BriefTrackerProps {
+  status: BriefStatus;
+}
+
+export default function BriefTracker(props: BriefTrackerProps) {
   void props;
-  return <div className="rounded-2xl border border-slate-800 bg-slate-900 p-4 text-slate-100">BriefTracker stub</div>;
+  return (
+    <div className="border border-dashed border-slate-700 bg-slate-900 p-3 text-sm text-slate-300">
+      BriefTracker stub
+    </div>
+  );
 }
