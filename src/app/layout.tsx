@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import type { ReactNode } from 'react';
 import './globals.css';
 import Navbar from '@/components/Navbar';
@@ -13,7 +14,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className="min-h-screen bg-slate-950 text-slate-100 antialiased">
         <AppProvider>
-          <Navbar />
+          <Suspense fallback={null}>
+            <Navbar />
+          </Suspense>
           <main className="mx-auto w-full max-w-6xl px-4 py-8">{children}</main>
         </AppProvider>
       </body>

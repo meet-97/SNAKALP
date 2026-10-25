@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 
 import { useCallback, useState } from 'react';
 import Link from 'next/link';
@@ -22,7 +23,7 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-export default function CreatorProfilePage() {
+function CreatorProfileContent() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
   const { briefs, shortlistCreator } = useAppState();
@@ -292,3 +293,10 @@ export default function CreatorProfilePage() {
     </main>
   );
 }
+export default function CreatorProfilePage() {
+     return (
+       <Suspense fallback={<div className="p-8 text-slate-400">Loading creator...</div>}>
+         <CreatorProfileContent />
+       </Suspense>
+     );
+   }
