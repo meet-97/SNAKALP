@@ -10,6 +10,11 @@ export async function GET(request: Request) {
   let next = searchParams.get('next') ?? '/'
   if (!next.startsWith('/') || next.startsWith('//')) next = '/'
 
+  // Behind Vercel's load balancer the real address is in x-forwarded-host
+  const forwardedHost = request.headers.get('x-forwarded-host')
+  const isLocal = process.env.NODE_ENV === 'development'
+  const base = !isLocal && forwardedHost ? `https://${forwardedHost}` : origin
+
   if (code) {
     const supabase = await createClient()
     const { error } = await supabase.auth.exchangeCodeForSession(code)
@@ -24,15 +29,22 @@ export async function GET(request: Request) {
       }
       cookieStore.delete('pending_role')
 
-      const forwardedHost = request.headers.get('x-forwarded-host')
-      const isLocal = process.env.NODE_ENV === 'development'
-
-      if (!isLocal && forwardedHost) {
-        return NextResponse.redirect(`https://${forwardedHost}${next}`)
+      // Google users who did not pick Brand or Creator first choose on /welcome
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+      if (user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', user.id)
+          .single()
+        if (!profile?.role) return NextResponse.redirect(`${base}/welcome`)
       }
-      return NextResponse.redirect(`${origin}${next}`)
+
+      return NextResponse.redirect(`${base}${next}`)
     }
   }
 
-  return NextResponse.redirect(`${origin}/login?error=callback`)
+  return NextResponse.redirect(`${base}/login?error=callback`)
 }

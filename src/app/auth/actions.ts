@@ -28,6 +28,17 @@ async function getOrigin() {
   return `${proto}://${host}`
 }
 
+// Does this signed-in user already have a role (brand or creator)?
+async function hasRole(supabase: Awaited<ReturnType<typeof createClient>>) {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  if (!user) return false
+
+  const { data } = await supabase.from('profiles').select('role').eq('id', user.id).single()
+  return Boolean(data?.role)
+}
+
 export async function signUpWithEmail(
   _prevState: ActionState,
   formData: FormData
@@ -83,7 +94,8 @@ export async function signInWithEmail(
 
   if (error) return { error: error.message }
 
-  redirect(next)
+  // Accounts without a role (for example created in the dashboard) pick one first
+  redirect((await hasRole(supabase)) ? next : '/welcome')
 }
 
 export async function signInWithGoogle(formData: FormData) {
@@ -132,7 +144,8 @@ export async function chooseRole(formData: FormData) {
   if (!role) return
 
   const supabase = await createClient()
-  await supabase.rpc('set_my_role', { new_role: role })
+  const { error } = await supabase.rpc('set_my_role', { new_role: role })
+  if (error) redirect('/welcome?error=role')
 
   redirect('/')
 }

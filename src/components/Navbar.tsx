@@ -3,18 +3,21 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { signOut } from '@/app/auth/actions';
 import BriefModal from '@/components/BriefModal';
+import type { CurrentUser } from '@/lib/auth';
 
 const NAV_LINKS = [
   { href: '/', label: 'Discover' },
   { href: '/briefs', label: 'Briefs' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ user }: { user: CurrentUser | null }) {
   const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   // The login page has its own full-screen design, so hide the app navbar there
-  if (pathname === '/login') return null;
+  if (pathname === '/login' || pathname === '/welcome') return null;
 
   return (
     <>
@@ -54,6 +57,34 @@ export default function Navbar() {
             >
               Post a Brief
             </button>
+
+            {user ? (
+              <div className="ml-1 flex items-center gap-2 border-l border-slate-800 pl-3">
+                <span className="hidden text-xs text-slate-400 sm:inline">
+                  {user.displayName || user.email}
+                  {user.role && (
+                    <span className="ml-1.5 rounded-full bg-slate-800 px-2 py-0.5 text-[10px] uppercase tracking-wide text-slate-300">
+                      {user.role}
+                    </span>
+                  )}
+                </span>
+                <form action={signOut}>
+                  <button
+                    type="submit"
+                    className="rounded-full border border-slate-700 px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:text-white"
+                  >
+                    Sign out
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                className="rounded-full border border-slate-700 px-3 py-1.5 text-sm font-medium text-slate-200 transition hover:text-white"
+              >
+                Sign in
+              </Link>
+            )}
           </nav>
         </div>
       </header>
