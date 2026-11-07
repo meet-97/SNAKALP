@@ -34,5 +34,5 @@ export async function GET(request: Request) {
     }
   }
 
-  return NextResponse.redirect(`${origin}/auth-test?error=callback`)
+  return NextResponse.redirect(`${origin}/login?error=callback`)
 }

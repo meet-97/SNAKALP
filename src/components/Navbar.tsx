@@ -13,6 +13,8 @@ const NAV_LINKS = [
 export default function Navbar() {
   const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // The login page has its own full-screen design, so hide the app navbar there
+  if (pathname === '/login') return null;
 
   return (
     <>

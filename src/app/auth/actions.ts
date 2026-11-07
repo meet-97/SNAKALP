@@ -12,6 +12,12 @@ function parseRole(value: FormDataEntryValue | null): Role | null {
   return value === 'brand' || value === 'creator' ? value : null
 }
 
+// Only allow paths inside our own site (blocks "https://evil.com" tricks)
+function safeNext(formData: FormData) {
+  const next = String(formData.get('next') ?? '/')
+  return next.startsWith('/') && !next.startsWith('//') ? next : '/'
+}
+
 // Works out the website address (http://localhost:3000 or your live URL)
 async function getOrigin() {
   const h = await headers()
@@ -31,8 +37,11 @@ export async function signUpWithEmail(
   const role = parseRole(formData.get('role'))
   const fullName = String(formData.get('fullName') ?? '').trim()
   const companyName = String(formData.get('companyName') ?? '').trim()
+  const next = safeNext(formData)
 
   if (!role) return { error: 'Please choose Brand or Creator first.' }
+  if (role === 'brand' && !companyName) return { error: 'Please enter your company name.' }
+  if (!fullName) return { error: 'Please enter your name.' }
   if (!email || !password) return { error: 'Email and password are required.' }
   if (password.length < 8) return { error: 'Password must be at least 8 characters.' }
 
@@ -43,9 +52,9 @@ export async function signUpWithEmail(
     email,
     password,
     options: {
-      // This is copied into the profile by the database trigger we wrote in Step 2
+      // Copied into the profile by the database trigger from Step 2
       data: { role, full_name: fullName, company_name: companyName },
-      emailRedirectTo: `${origin}/auth/callback?next=/auth-test`,
+      emailRedirectTo: `${origin}/auth/callback?next=${encodeURIComponent(next)}`,
     },
   })
 
@@ -56,7 +65,7 @@ export async function signUpWithEmail(
     return { message: 'Account created. Check your email to confirm it, then sign in.' }
   }
 
-  redirect('/auth-test')
+  redirect(next)
 }
 
 export async function signInWithEmail(
@@ -65,6 +74,7 @@ export async function signInWithEmail(
 ): Promise<ActionState> {
   const email = String(formData.get('email') ?? '').trim()
   const password = String(formData.get('password') ?? '')
+  const next = safeNext(formData)
 
   if (!email || !password) return { error: 'Email and password are required.' }
 
@@ -73,11 +83,12 @@ export async function signInWithEmail(
 
   if (error) return { error: error.message }
 
-  redirect('/auth-test')
+  redirect(next)
 }
 
 export async function signInWithGoogle(formData: FormData) {
   const role = parseRole(formData.get('role'))
+  const next = safeNext(formData)
   const supabase = await createClient()
   const origin = await getOrigin()
 
@@ -95,12 +106,25 @@ export async function signInWithGoogle(formData: FormData) {
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
-    options: { redirectTo: `${origin}/auth/callback?next=/auth-test` },
+    options: { redirectTo: `${origin}/auth/callback?next=${encodeURIComponent(next)}` },
   })
 
-  if (error || !data.url) redirect('/auth-test?error=google')
+  if (error || !data.url) redirect('/login?error=google')
 
   redirect(data.url)
+}
+
+// Guest mode: remember for 30 days that this visitor chose to browse without an account
+export async function continueAsGuest() {
+  const cookieStore = await cookies()
+  cookieStore.set('snakalp_guest', '1', {
+    httpOnly: true,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 60 * 60 * 24 * 30,
+    secure: process.env.NODE_ENV === 'production',
+  })
+  redirect('/')
 }
 
 export async function chooseRole(formData: FormData) {
@@ -110,11 +134,11 @@ export async function chooseRole(formData: FormData) {
   const supabase = await createClient()
   await supabase.rpc('set_my_role', { new_role: role })
 
-  redirect('/auth-test')
+  redirect('/')
 }
 
 export async function signOut() {
   const supabase = await createClient()
   await supabase.auth.signOut()
-  redirect('/auth-test')
+  redirect('/login')
 }
