@@ -1,7 +1,7 @@
 'use client'
 
 import { Command } from 'cmdk'
-import { Compass, FileText, LogIn, Search, Trash2, User } from 'lucide-react'
+import { Compass, FilePlus, FileText, Home, LogIn, Search, Trash2, User } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { mockCreators } from '@/data/mockCreators'
@@ -72,8 +72,14 @@ export default function CommandPalette() {
         </Command.Empty>
 
         <Command.Group heading="Go to" className={groupClass}>
-          <Command.Item value="discover creators home" onSelect={() => go('/')} className={itemClass}>
+          <Command.Item value="home dashboard" onSelect={() => go('/')} className={itemClass}>
+            <Home className="h-4 w-4" aria-hidden /> Home
+          </Command.Item>
+          <Command.Item value="discover creators browse" onSelect={() => go('/discover')} className={itemClass}>
             <Compass className="h-4 w-4" aria-hidden /> Discover creators
+          </Command.Item>
+          <Command.Item value="new brief post create wizard" onSelect={() => go('/briefs/new')} className={itemClass}>
+            <FilePlus className="h-4 w-4" aria-hidden /> Start a new brief
           </Command.Item>
           <Command.Item value="briefs my briefs" onSelect={() => go('/briefs')} className={itemClass}>
             <FileText className="h-4 w-4" aria-hidden /> Briefs

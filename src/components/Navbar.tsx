@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { signOut } from '@/app/auth/actions'
-import BriefModal from '@/components/BriefModal'
 import { OPEN_PALETTE_EVENT } from '@/components/CommandPalette'
 import type { CurrentUser } from '@/lib/auth'
 
@@ -40,7 +39,6 @@ function initialsOf(user: CurrentUser) {
 
 export default function Navbar({ user }: { user: CurrentUser | null }) {
   const pathname = usePathname()
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [bellOpen, setBellOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -52,7 +50,8 @@ export default function Navbar({ user }: { user: CurrentUser | null }) {
 
   const canPostBrief = user?.role === 'brand' || user?.role === 'admin'
   const links = [
-    { href: '/', label: 'Discover' },
+    { href: '/', label: 'Home' },
+    { href: '/discover', label: 'Discover' },
     ...(canPostBrief ? [{ href: '/briefs', label: 'Briefs' }] : []),
   ]
 
@@ -66,7 +65,7 @@ export default function Navbar({ user }: { user: CurrentUser | null }) {
 
           <nav className="ml-6 hidden items-center gap-1 md:flex" aria-label="Main">
             {links.map((link) => {
-              const active = pathname === link.href
+              const active = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href)
               return (
                 <Link
                   key={link.href}
@@ -124,13 +123,12 @@ export default function Navbar({ user }: { user: CurrentUser | null }) {
             </div>
 
             {canPostBrief && (
-              <button
-                type="button"
-                onClick={() => setIsModalOpen(true)}
+              <Link
+                href="/briefs/new"
                 className="hidden items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-paper transition hover:bg-vermilion sm:inline-flex"
               >
                 <Plus className="h-4 w-4" aria-hidden /> New brief
-              </button>
+              </Link>
             )}
 
             {user ? (
@@ -202,22 +200,18 @@ export default function Navbar({ user }: { user: CurrentUser | null }) {
               </Link>
             ))}
             {canPostBrief && (
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileOpen(false)
-                  setIsModalOpen(true)
-                }}
-                className="mt-1 w-full rounded-xl bg-ink px-3 py-2.5 text-left text-sm font-semibold text-paper"
+              <Link
+                href="/briefs/new"
+                onClick={() => setMobileOpen(false)}
+                className="mt-1 block w-full rounded-xl bg-ink px-3 py-2.5 text-left text-sm font-semibold text-paper"
               >
                 New brief
-              </button>
+              </Link>
             )}
           </div>
         )}
       </header>
 
-      <BriefModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )
 }

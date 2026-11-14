@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowUpRight, Bookmark, BookmarkCheck, Check, Clock, Eye, Star } from 'lucide-react'
+import { ArrowUpRight, Bookmark, BookmarkCheck, Check, Clock, Eye, Scale, Star } from 'lucide-react'
 import Link from 'next/link'
 import VerificationBadges from '@/components/VerificationBadges'
 import { useWorkspace } from '@/context/WorkspaceContext'
@@ -62,6 +62,18 @@ export default function CreatorCard({
           }`}
         >
           {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden /> : <Bookmark className="h-4 w-4" aria-hidden />}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => toggleCompare(creator.id)}
+          aria-pressed={comparing}
+          aria-label={comparing ? `Remove ${creator.handle} from compare` : `Add ${creator.handle} to compare`}
+          className={`absolute bottom-3 right-3 z-10 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+            comparing ? 'bg-ink text-lime' : 'bg-paper/90 text-ink hover:bg-ink hover:text-paper'
+          }`}
+        >
+          {comparing ? <Check className="h-3.5 w-3.5" aria-hidden /> : <Scale className="h-3.5 w-3.5" aria-hidden />} Compare
         </button>
 
         {/* Hover: reveal the proof behind the first piece of work */}
@@ -130,27 +142,16 @@ export default function CreatorCard({
           <button
             type="button"
             onClick={() => (onQuickView ? onQuickView(creator) : undefined)}
-            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-paper transition hover:bg-vermilion"
+            className="inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-paper transition hover:bg-vermilion"
           >
             <Eye className="h-4 w-4" aria-hidden /> Quick view
           </button>
           <Link
             href={`/creator/${creator.id}`}
-            className="inline-flex items-center justify-center rounded-full border border-ink/20 px-4 py-2.5 text-sm font-semibold transition hover:border-ink"
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-ink/20 px-5 py-2.5 text-sm font-semibold transition hover:border-ink"
           >
             Profile
           </Link>
-          <button
-            type="button"
-            onClick={() => toggleCompare(creator.id)}
-            aria-pressed={comparing}
-            aria-label={comparing ? `Remove ${creator.handle} from compare` : `Add ${creator.handle} to compare`}
-            className={`flex h-10 items-center gap-1.5 rounded-full border px-3 text-sm font-semibold transition ${
-              comparing ? 'border-ink bg-ink text-lime' : 'border-ink/20 hover:border-ink'
-            }`}
-          >
-            {comparing && <Check className="h-3.5 w-3.5" aria-hidden />} Compare
-          </button>
         </div>
       </div>
     </article>
